@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Policy from './components/Policy';
 import NavBar from './components/NavBar';
 import HomeScreen from './screen/HomeScreen';
+import CartScreen from './screen/CartScreen';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <NavBar/>
           <Routes>
             <Route path="/" element={<HomeScreen/>} exact />
+            <Route path="/cart" element={<CartScreen/>} exact />
             <Route path="/about" element={<About/>} exact />
             <Route path="/contact" element={<Contact/>} exact />
             <Route path="/policy" element={<Policy/>} exact />
