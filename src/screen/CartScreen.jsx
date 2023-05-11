@@ -1,10 +1,14 @@
 import React from 'react'
 import { Container, Row,Col } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import {AiFillMinusCircle}  from 'react-icons/ai'
+import {BsFillPlusCircleFill}  from 'react-icons/bs'
+import {addToCart} from '../actions/cartAction'
 
 const CartScreen = () => {
     const cartState = useSelector(state => state.cartReducer)
-    const cartItems = cartState.cartItems
+    const cartItems = cartState.cartItems;
+    const dispatch = useDispatch()
   return (
     <>
     <Container>
@@ -16,12 +20,17 @@ const CartScreen = () => {
                     {
                         cartItems.map(item=>(
                             <>
-                         
                                 <Col md={7}>
                                     <h5><span className='text-primary'>Name:</span> {item.name} <span className="text-danger">Size:</span>  {item.variant}</h5>
-                                    <h6>{" "}
-                                    Price:<span></span> {item.quantity}x {item.prices[0][item.variant]} = {""} {item.price} /=</h6>
-                                    <h6><span></span>Quantity: {item.quantity}</h6>
+                                    <h6>
+                                   <span className='text-primary'>{" "} Price:</span> {item.quantity}x {item.prices[0][item.variant]} = {" "} {item.price} /=</h6>
+                                    <h5><span className='text-primary'>Quantity: &nbsp;</span> <BsFillPlusCircleFill className='text-danger'
+                                     style={{cursor: "pointer"}}
+                                     onClick={()=>{dispatch(addToCart(item, item.quantity + 1, item.variant))}}
+                                    />&nbsp; {item.quantity} &nbsp; <AiFillMinusCircle className='text-danger'
+                                    style={{cursor: "pointer"}}
+                                    onClick={()=>{dispatch(addToCart(item, item.quantity - 1, item.variant))}}
+                                    />  </h5>
 
                                 </Col>
                                 <Col md={5}>
