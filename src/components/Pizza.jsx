@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cartAction';
@@ -22,13 +22,13 @@ const Pizza = ({pizza}) => {
 
 
   return (
-    <>
-
-      <Card style={{ width: '18rem', marginTop: '30px' ,  cursor: 'pointer'}}>
+    <Container>
+      <div className="gx-5 " >
+      <Card style={{ width: '17rem', margin: '5px' ,  cursor: 'pointer'}}>
       <Card.Img 
       variant="top" 
       src={pizza.image}
-       style={{height: "250px"}}
+       style={{height: "150px"}}
        onClick={handleShow}
      
        />
@@ -89,7 +89,8 @@ const Pizza = ({pizza}) => {
         </Modal.Body>
         
       </Modal>
-    </>
+      </div>
+    </Container>
   )
 }
 

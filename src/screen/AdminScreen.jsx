@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import {  Col, Nav, Row } from 'react-bootstrap'
+import {  Col, Navbar, Row } from 'react-bootstrap'
 import { Outlet} from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector } from 'react-redux'
+import Nav from 'react-bootstrap/Nav';
 
 
 const AdminScreen = () => {
@@ -17,34 +18,31 @@ const AdminScreen = () => {
     <>
   
         <Row>
-            <h3 className='text-center bg-dark text-light p-1'>Admin Panel</h3>
-            <Col md={4}>
-            <div className='' style={{minHeight: '400px',
-                                     backgroundColor: '#0443',
-                                     width:'200px',
-                                     textAlign: 'center'}}>
-                     <hr/>         
-                <LinkContainer to="/admin/orderList">
-                    <Nav.Link ><h5 >Oder List</h5></Nav.Link>
-                </LinkContainer>
-                <hr/>
-                <LinkContainer to="/admin/userList">
-                    <Nav.Link ><h5>User List</h5></Nav.Link>
-                </LinkContainer>
-                <hr/>
-                <LinkContainer to="/admin/pizzaList">
-                    <Nav.Link ><h5>Pizz List</h5></Nav.Link>
-                </LinkContainer>
-                <hr/>
-                <LinkContainer to="/admin/addPizza">
-                    <Nav.Link ><h5>Add Pizza</h5></Nav.Link>
-                </LinkContainer>
-                <hr/>
+            <h4 className='text-center bg-dark text-light p-1'>Admin Panel</h4>
+            <Col md={2}>
+          
+              <Navbar bg="dark" variant="dark" style={{height:'400px'}}>
+              <Nav variant="pills"  className="flex-column text-center m-4 ">
+                        <LinkContainer to="/admin/orderList" activeClassName>
+                             <Nav.Link >ORDER LIST</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/admin/userList" activeClassName>
+                            <Nav.Link >USER LIST</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/admin/pizzaList" activeClassName>
+                            <Nav.Link >PIZZA LIST</Nav.Link>
+                        </LinkContainer>
+                      
+                        <LinkContainer to="/admin/addPizza" activeClassName>
+                            <Nav.Link >ADD PIZZA</Nav.Link>
+                        </LinkContainer>
+                        </Nav>
+              </Navbar>
+                   
                 
-             </div>
-               
+      
             </Col>
-            <Col md={8}>
+            <Col md={10}>
                 <Outlet/>
             </Col>
         </Row>
