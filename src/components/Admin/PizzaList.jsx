@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllPizzas } from '../../actions/pizzaAction'
+import { deletePizza, getAllPizzas } from '../../actions/pizzaAction'
 import Pizza from '../../components/Pizza'
 import Loader from '../../components/Loader'
 import Error from '../../components/Error'
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom'
 
 
 
@@ -50,12 +51,21 @@ const PizzaList = () => {
                           <br />
                         </td>
                         <td>{pizza.category}</td>
-                        <td> <AiFillEdit/> &nbsp;&nbsp; <AiFillDelete/></td>
+                        <td>
+                          <Link to={`/admin/editPizza/${pizza._id}`}>
+                          <AiFillEdit/>
+                          </Link>
+                          
+                            &nbsp;&nbsp;&nbsp;
+                             <AiFillDelete
+                              style={{color: 'red', cursor: "pointer"}}
+                             onClick={()=> {dispatch(deletePizza(pizza._id))}} />
+                        </td>
                       </tr>
                       ))
                   }
                     
-                  </tbody>
+                  </tbody> 
                 </Table>
               )
       }

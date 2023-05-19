@@ -17,7 +17,7 @@ export const placeOrder =(token, subTotal)=> async(dispatch,getState)=>{
     }
 }
 
-//================//getOrderAction Function=================
+//================//get User Order Action Function=================
 export const getUserOrders = () => async(dispatch, getState)=>{
     const currentUser = getState().loginUserReducer.currentUser;
     dispatch({
@@ -31,5 +31,20 @@ export const getUserOrders = () => async(dispatch, getState)=>{
         dispatch({type: 'USER_ORDER_SUCCESS', payload: response.data});
     } catch (error) {
         dispatch({type: 'USER_ORDER_FAIL', payload: error});
+    }
+}
+//================//get All Order Action Function=================
+
+export const getAllOrders = () => async(dispatch, getState)=>{
+    // const currentUser = getState().loginUserReducer.currentUser;
+    dispatch({
+        type: 'All_ORDER_REQUEST'
+    })
+    try {
+        const response = await axios.get('http://localhost:8000/api/orders/getAllUserOrder')
+        console.log(response)
+        dispatch({type: 'All_ORDER_SUCCESS', payload: response.data});
+    } catch (error) {
+        dispatch({type: 'All_ORDER_FAIL', payload: error});
     }
 }

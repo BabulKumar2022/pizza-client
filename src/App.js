@@ -17,6 +17,7 @@ import OrderList from './components/Admin/OrderList';
 import UserList from './components/Admin/UserList';
 import PizzaList from './components/Admin/PizzaList';
 import AddNewPizza from './components/Admin/AddNewPizza';
+import  EditPizza  from './components/Admin/EditPizza';
 
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/admin" element={<AdminScreen/>} >
                 <Route path="orderList" element={<OrderList/>}/>
                 <Route path="userList" element={<UserList/>}/>
+                <Route path="editPizza/:pizzaId" element={<EditPizza/>}/>
                 <Route path="pizzaList" element={<PizzaList/>}/>
                 <Route path="addPizza" element={<AddNewPizza/>}/>
             </Route>
