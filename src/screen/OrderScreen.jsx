@@ -9,6 +9,7 @@ const OrderScreen = () => {
   const orderState = useSelector(state => state.getUserOrderReducer)
   const {loading, error, orders} = orderState
     const dispatch = useDispatch()
+    
     useEffect(() =>{
         dispatch(getUserOrders())
     },[dispatch])

@@ -38,3 +38,26 @@ export const loginUserReducer = (state = {}, action)=>{
                 return state;
     }
 }
+
+//=============get all user reducer============
+export const getAllUsersReducer = (state = {users: []}, action) =>{
+    switch (action.type){
+        case "GET_USER_REQUEST":
+            return{
+                ...state,
+                loading: true,
+            };
+            case "GET_USER_SUCCESS":
+                return{
+                    users: action.payload,
+                    loading: false,
+                };
+                case "GET_USER_FAIL":
+                    return{
+                        error: action.payload,
+                        loading: false,
+                    };
+                    default:
+                        return state;
+    }
+};

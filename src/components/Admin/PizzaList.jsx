@@ -16,6 +16,8 @@ const PizzaList = () => {
   const pizzaState = useSelector(state => state.getAllPizzaReducer)
   const {loading, pizzas, error} = pizzaState;
   useEffect(()=>{dispatch(getAllPizzas())},[dispatch])
+  // console.log(pizzas)
+
   return (
     <div>
    
